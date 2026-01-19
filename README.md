@@ -70,9 +70,37 @@ An AI-powered chess tutor that uses a Quick LLM architecture with deterministic 
 ### Interactive Demo
 
 ```bash
-source venv/bin/activate
-python examples/demo.py
+uv run python examples/demo.py
 ```
+
+### Simulated Conversations (for Tracing)
+
+Run predefined conversation scenarios to generate tracing data:
+
+```bash
+# Run all scenarios
+uv run python examples/simulate_conversations.py
+
+# Run 5 random scenarios
+uv run python examples/simulate_conversations.py --count 5
+
+# Run specific scenarios by index
+uv run python examples/simulate_conversations.py --scenario 0 2 4
+
+# Repeat all scenarios 3 times
+uv run python examples/simulate_conversations.py --repeat 3
+
+# List available scenarios
+uv run python examples/simulate_conversations.py --list
+```
+
+The simulator includes 10 predefined scenarios:
+- Different openings (Italian, Sicilian, Queen's Gambit, etc.)
+- Different skill levels (beginner, intermediate, advanced)
+- Mix of moves and chat interactions
+- Chat-only conversations
+
+Each conversation generates unique `x-thread-id` and `x-run-id` headers for tracing in vLLora.
 
 ### Commands
 
@@ -124,7 +152,8 @@ chess-tutor/
 ├── README.md
 ├── pyproject.toml         # Project configuration and dependencies
 ├── examples/
-│   └── demo.py            # Interactive CLI demo
+│   ├── demo.py                      # Interactive CLI demo
+│   └── simulate_conversations.py   # Conversation simulator for tracing
 └── src/
     ├── __init__.py
     ├── agents/

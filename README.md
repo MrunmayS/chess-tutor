@@ -40,18 +40,12 @@ An AI-powered chess tutor that uses a Quick LLM architecture with deterministic 
 
 ## Installation
 
-1. **Clone and navigate to the directory:**
+1. **Install dependencies with uv:**
    ```bash
-   cd samples/chess-tutor
+   uv sync
    ```
 
-2. **Run the setup script:**
-   ```bash
-   chmod +x setup.sh
-   ./setup.sh
-   ```
-
-3. **Install Stockfish** (if not already installed):
+2. **Install Stockfish** (if not already installed):
    ```bash
    # Linux (Debian/Ubuntu)
    sudo apt install stockfish
@@ -60,7 +54,7 @@ An AI-powered chess tutor that uses a Quick LLM architecture with deterministic 
    brew install stockfish
    ```
 
-4. **Configure your environment:**
+3. **Configure your environment:**
    Edit `.env` and set your configuration:
    ```bash
    # For direct OpenAI API usage:
@@ -124,12 +118,11 @@ This enables full observability of the tutor's reasoning through vLLora.
 ## Project Structure
 
 ```
-samples/chess-tutor/
+chess-tutor/
 ├── .env.example           # Environment template
 ├── .gitignore
 ├── README.md
-├── requirements.txt
-├── setup.sh               # Setup script
+├── pyproject.toml         # Project configuration and dependencies
 ├── examples/
 │   └── demo.py            # Interactive CLI demo
 └── src/
